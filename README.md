@@ -17,6 +17,6 @@
 
     ```http://localhost:6080/vnc.html```
 
-1. Open a terminal window and verify ROS 2 installation by running this command (output should NOT be empty):
+1. Open a terminal window and verify ROS 2 installation by running this command (output should show ROS variables):
 
     ```printenv | grep ROS```
