@@ -1,0 +1,2 @@
+1. Modify this file from HOST (your system), and verify that the changes appear in the CONTAINER.
+2. Modify this file in the CONTAINER, and verify that the changes appear in the HOST.

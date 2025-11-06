@@ -1,4 +1,3 @@
-# FROM ubuntu:24.04
 FROM osrf/ros:jazzy-desktop
 
 # Prevent interactive prompts during package installation
