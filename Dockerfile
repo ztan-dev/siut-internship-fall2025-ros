@@ -23,6 +23,7 @@ RUN chmod +x /start.sh
 
 WORKDIR $HOME
 
+
 # Locale, essentials, GUI packages, OpenGL
 RUN apt update && apt install -y \
     sudo wget curl gnupg2 lsb-release software-properties-common \
@@ -48,6 +49,8 @@ RUN apt-get update && apt-get install -y \
     novnc \
     websockify \
     xterm \
+    vim \
+    btop \
     dbus-x11 \
     net-tools \
     && apt-get clean \
