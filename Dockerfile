@@ -15,7 +15,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
     DISPLAY_HEIGHT=900 \
     SVGA_VGPU10=0 \
     ROS_LOG_DIR=/tmp/.ros/log \
-    VNC_PASSWORD=honor-freethinking-humanism \
+    VNC_PASSWORD=honor-freethinking-humanism
 
 # Start script setup
 COPY start.sh /start.sh
