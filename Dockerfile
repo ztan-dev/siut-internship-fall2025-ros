@@ -20,8 +20,8 @@ ENV DEBIAN_FRONTEND=noninteractive \
     VNC_PASSWORD=honor-freethinking-humanism
 
 # Start script setup
-COPY start.sh /start.sh
-RUN chmod +x /start.sh
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
 WORKDIR $HOME
 
@@ -75,4 +75,4 @@ EXPOSE 6080
 # ROS 2 entrypoint
 RUN echo "source /opt/ros/jazzy/setup.bash" >> $HOME/.bashrc
 
-CMD ["/start.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
