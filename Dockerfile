@@ -1,4 +1,6 @@
-# --- Base image ---
+# Reference: https://github.com/GrijzePanda/ros2-gazebo-vnc
+
+# Base image
 FROM osrf/ros:jazzy-desktop
 
 LABEL name="ros2-gazebo-vnc" \
@@ -23,7 +25,6 @@ RUN chmod +x /start.sh
 
 WORKDIR $HOME
 
-
 # Locale, essentials, GUI packages, OpenGL
 RUN apt update && apt install -y \
     sudo wget curl gnupg2 lsb-release software-properties-common \
@@ -34,7 +35,6 @@ RUN apt update && apt install -y \
     add-apt-repository universe
 
 # Install Gazebo
-# Reference: https://github.com/GrijzePanda/ros2-gazebo-vnc
 RUN curl -fsSL https://packages.osrfoundation.org/gazebo.gpg -o /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg && \
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] \
     https://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" \
@@ -56,26 +56,23 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# --- Final APT check ---
+# Final APT check
 RUN apt update && apt full-upgrade -y && rm -rf /var/lib/apt/lists/*
 
-# --- Switch user & permissions ---
+# Switch user & permissions
 RUN mkdir -p $HOME && chown -R $USERNAME:$USERNAME $HOME
 USER $USERNAME
 
-# # --- VNC setup ---
-# RUN mkdir -p $HOME/.vnc && \
-#     echo "$VNC_PASSWORD" | /opt/TurboVNC/bin/vncpasswd -f > $HOME/.vnc/passwd && \
-#     chmod 600 $HOME/.vnc/passwd
+# VNC setup
 RUN mkdir -p ~/.vnc && x11vnc -storepasswd honor-freethinking-humanism ~/.vnc/passwd
 
 RUN echo -e "#!/bin/bash\nxrdb \$HOME/.Xresources\nstartxfce4 &" > $HOME/.vnc/xstartup && \
     chmod +x $HOME/.vnc/xstartup
 
-# --- Expose VNC port ---
+# Expose VNC port
 EXPOSE 6080
 
-# --- ROS 2 entrypoint ---
+# ROS 2 entrypoint
 RUN echo "source /opt/ros/jazzy/setup.bash" >> $HOME/.bashrc
 
 CMD ["/start.sh"]
