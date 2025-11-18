@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>vacuum_sim</name>
+  <version>0.0.1</version>
+  <description>Simulation worlds and launch files for robot vacuum navigation teaching.</description>
+
+  <maintainer email="your-email@example.com">Your Name</maintainer>
+  <license>MIT</license>
+
+  <!-- Required build tools -->
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <!-- Runtime deps -->
+  <exec_depend>ros_gz_bridge</exec_depend>
+  <exec_depend>ros_gz_sim</exec_depend>
+  <exec_depend>turtlebot4_description</exec_depend>
+  <exec_depend>turtlebot4_gz</exec_depend>
+
+  <!-- For launching -->
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+
+  <!-- For Python packaging -->
+  <exec_depend>ament_cmake_python</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

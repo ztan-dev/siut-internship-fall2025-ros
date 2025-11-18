@@ -1,0 +1,15 @@
+point: [float x, float y]
+obstacle: [point corner1, point corner2, point corner3, point corner4]
+pose: (see Turtlesim documentation)
+
+function path_planner():
+    inputs:
+        pose start_pose
+        float robot_width
+        float room_size_x
+        float room_size_y
+        obstacle[] obstacles
+    output:
+        point[] waypoints
+    algorithm:
+        ???
